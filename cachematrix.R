@@ -1,21 +1,27 @@
 ## The function written below will set and gets the inverse of a matrix
-## given as teh input
+## given as the input
 
-## Write a short comment describing this function
-
+## the below function sets and gets the matrix
 makeCacheMatrix <- function(x = matrix()) {
   Inverse <- NULL
+  set <- function(y) {
     x <<- y
     Inverse <<- NULL
   }
+  get <- function() x
+  setInv <- function(inv) Inverse <<- inv
+  getInv <- function() Inverse
+  list(set = set, get = get,
+       setInv = setInv,
+       getInv = getInv)
   
 }
 
-
-## Write a short comment describing this function
+## Cache solve takes the output list from makeCaheMatrix as input
+## and calculates inverse for the input matrix
 
 cacheSolve <- function(x, ...) {
-  ## Return a matrix that is the inverse of 'x'
+  
   Inverse <- x$getInv()
   if(!is.null(Inverse)) {
     message("getting cached data")
